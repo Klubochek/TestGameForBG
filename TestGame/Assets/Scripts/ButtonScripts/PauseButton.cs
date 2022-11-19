@@ -11,14 +11,14 @@ public class PauseButton : MonoBehaviour
         menu.SetActive(true);
         Time.timeScale = 0;
 
-        MenuFadeout();
+        StartCoroutine(MenuFadeout());
 
     }
 
-    public void MenuFadeout()
+    public IEnumerator MenuFadeout()
     {
         for (byte i = 255; i > 0; i--)
-            menu.GetComponent<Image>().color =new Color32(i, i, i, 100);
-        
+            menu.GetComponent<Image>().color =new Color32(i, i, i, 200);
+        yield return new WaitForSeconds(0.1f);
     }
 }

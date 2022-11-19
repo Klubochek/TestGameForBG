@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnCollisionStay (Collision collision)
     {
         if (collision.gameObject.tag == "DeathArea"&&!isActiveShield)
         {

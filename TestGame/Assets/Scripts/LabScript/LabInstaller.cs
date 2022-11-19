@@ -16,7 +16,9 @@ public class LabInstaller : MonoBehaviour
             {
                 GameObject newCell = Instantiate(CellPref,transform);
                 newCell.transform.localPosition = new Vector3(-22.5f + 5 * x, 0.25f, -22.5f +5* z);
+                newCell.name = $"Cell{x},{z}";
                 Cell3D c =newCell.GetComponent<Cell3D>();
+
                 c.WallLeft.SetActive(labyrinth.cells[x, z].WallLeft);
                 c.WallBottom.SetActive(labyrinth.cells[x, z].WallBottom);
                 c.DeathArea.SetActive(labyrinth.cells[x, z].DeathArea);
@@ -24,10 +26,7 @@ public class LabInstaller : MonoBehaviour
 
                 NavigationBaker.instance.surfaces.Add(c.LeftWallNav);
                 NavigationBaker.instance.surfaces.Add(c.BottomWallNav);
-
-
             }
-
         }
         NavigationBaker.instance.Bake();
     }

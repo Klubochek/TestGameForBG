@@ -6,6 +6,11 @@ public class LabGenerator
 {
     public int Width = 10;
     public int Height = 10;
+
+
+    #region GENERATOR
+
+
     public Labyrinth GenerateLab()
     {
         LabGeneratorCell[,] cells = new LabGeneratorCell[Width, Height];
@@ -37,6 +42,8 @@ public class LabGenerator
         lab.finishPos=PlaceExit(cells);
         return lab;
     }
+    #endregion
+    #region WALLREMOVER
     public void RemoveWallsWithBacktracker(LabGeneratorCell[,] lab)
     {
         LabGeneratorCell current = lab[0, 0];
@@ -103,4 +110,5 @@ public class LabGenerator
         lastCell.EndArea = true;
         return new Vector3(lastCell._x, 1, lastCell._y) ;
     }
+    #endregion
 }

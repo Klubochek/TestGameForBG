@@ -23,23 +23,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnCollisionStay (Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "DeathArea"&&!isActiveShield)
+        if (other.gameObject.tag == "DeathArea"&&!isActiveShield)
         {
             print("DEATHAREA");
             StartCoroutine(Death());
 
         }
-        if (collision.gameObject.tag == "EndArea")
+        if (other.gameObject.tag == "EndArea")
         {
             print("ENDAREA");
         }
     }
     public IEnumerator Death()
     {
-        GameObject ex = Instantiate(deathAnimation);
-        deathAnimation.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        GameObject ex = Instantiate(deathAnimation,transform.position,Quaternion.identity);
+        //deathAnimation.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         yield return new WaitForSeconds(1);
         playerTransform.position = startPos;
         yield return new WaitForSeconds(1);

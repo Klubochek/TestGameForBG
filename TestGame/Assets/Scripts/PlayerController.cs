@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool isActiveShield = false;
     public GameObject FadeIn;
     public GameObject deathAnimation;
+    public GameObject confetti;
     private Vector3 startPos = new Vector3(0.5f, 4, 0.5f);
     [SerializeField] private GameObject target;
     private NavMeshAgent agent;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator Win()
     {
+        Instantiate(confetti, target.transform.position+ new Vector3(0, 3, 0), Quaternion.identity);
         Image im = FadeIn.GetComponent<Image>();
         byte i = 0;
         while (i!=255)

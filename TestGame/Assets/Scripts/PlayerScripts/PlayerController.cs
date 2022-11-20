@@ -5,14 +5,14 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     public bool isActiveShield = false;
-    private Vector3 startPos = new Vector3(-22.5f, 2, -22.5f);
+    private Vector3 startPos = new Vector3(-2.5f, 3 , -2.5f);
     private GameObject target;
     private NavMeshAgent agent;
 
     void Start()
     {
-        transform.localPosition = startPos;
         agent = GetComponent<NavMeshAgent>();
+        agent.Warp(startPos);
         StartCoroutine(GoToEndArea());
     }
 
@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
         {
             print("DEATHAREA");
             StartCoroutine(PlayerAnimation.Instance.Death(transform));
-            transform.localPosition = startPos;
+            agent.Warp(startPos);
+            StartCoroutine(GoToEndArea());
         }
         if (other.gameObject.tag == "EndArea")
         {

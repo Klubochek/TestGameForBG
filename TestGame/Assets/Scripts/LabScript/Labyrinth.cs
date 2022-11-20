@@ -3,7 +3,7 @@ using UnityEngine;
 public class Labyrinth
 {
     public LabGeneratorCell[,] cells;
-    public Vector3 finishPos;
+    public Vector2Int finishPos;
 }
 public class LabGeneratorCell
 {

@@ -23,11 +23,10 @@ public class LabInstaller : MonoBehaviour
                 c.WallBottom.SetActive(labyrinth.cells[x, z].WallBottom);
                 c.DeathArea.SetActive(labyrinth.cells[x, z].DeathArea);
                 c.EndArea.SetActive(labyrinth.cells[x, z].EndArea);
-
-                NavigationBaker.instance.surfaces.Add(c.LeftWallNav);
-                NavigationBaker.instance.surfaces.Add(c.BottomWallNav);
+             
             }
         }
-        NavigationBaker.instance.Bake();
+        PlayerRoad.Instance.CreateRoad();
+        //NavigationBaker.instance.Bake();
     }
 }

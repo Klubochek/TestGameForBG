@@ -93,7 +93,7 @@ public class LabGenerator
             else b.WallLeft = false;
         }
     }
-    private Vector3 PlaceExit(LabGeneratorCell[,] lab)
+    private Vector2Int PlaceExit(LabGeneratorCell[,] lab)
     {
         LabGeneratorCell lastCell = lab[0,0];
 
@@ -108,7 +108,7 @@ public class LabGenerator
             if (lab[0, y].DisatanceFromStart > lastCell.DisatanceFromStart) lastCell = lab[0, y];
         }
         lastCell.EndArea = true;
-        return new Vector3(lastCell._x, 1, lastCell._y) ;
+        return new Vector2Int (lastCell._x, lastCell._y) ;
     }
     #endregion
 }
